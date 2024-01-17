@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVXC65YW6G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VVXC65YW6G');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3 Rule Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="countdownTimer">
+        <div class="timer-container">
+            <h1 style="display:block">3.3 Rule Timer</h1>
+            <select id="timeSelect">
+                <option value="30">30 min</option>
+                <option value="60">1 hr</option>
+                <option value="90">1.5 hrs</option>
+                <option value="120">2 hrs</option>
+                <option value="180">3 hrs</option>
+            </select>
+            <button id="startButton">Start Timer</button>
+            <div id="countdownDisplay">
+                <span id="timerLabel"></span>
+            </div>
+            <div id="explanation-wrapper">
+                <div class="rule-explanation">
+                    <h2>About the 3.3 Rule</h2>
+                    <p>
+                        The 3.3 Rule, conceptualized by John Briggs, is a method to enhance productivity and prevent burnout. It involves working for up to three hours, followed by a recovery period of about 30% of the work time. 
+                        <a href="https://33rulebook.com/" target="_blank">Learn more about the 3.3 Rule</a>.
+                    </p>
+                </div>
+                <div class="keyq-explanation">
+                    <h2>About KeyQ</h2>
+                    <p>
+                        This timer tool was developed and made available by <a href="https://www.keyq.cloud" target="_blank">KeyQ</a> to help entrepreneurs and professionals effectively implement the 3.3 Rule in their daily routines. Empower your productivity journey with KeyQ's innovative solutions.
+                    </p>
+                    <a href="https://www.keyq.cloud" target="_blank"><img src=https://www.keyq.cloud/hs-fs/hubfs/keyq%20logo%20horizontal%20light_70-1.png?width=237&height=70&name=keyq%20logo%20horizontal%20light_70-1.png" /></a>
+                </div>
+            </div>
+            <footer class="footer">
+                <p>&copy; 2024 KeyQ. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
