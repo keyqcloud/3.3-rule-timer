@@ -1,40 +1,61 @@
+let isPaused = false;
+let timerInterval;
+let remainingTime;
+let isInWorkSession = true; // Tracks if the current session is work or recovery
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const alarmSound = new Audio('https://33ruletimer.keyq.cloud/alarm.mp3');
+    const startButton = document.getElementById('startButton');
+    const pauseButton = document.getElementById('pauseButton');
 
-    document.getElementById('startButton').addEventListener('click', () => {
+    startButton.addEventListener('click', () => {
         const selectedTime = document.getElementById('timeSelect').value;
         const workTime = selectedTime * 60 * 1000; // convert minutes to milliseconds
         const recoveryTime = workTime * 0.3; // 30% of work time
+
+        isPaused = false;
+        isInWorkSession = true;
+        remainingTime = workTime;
+
+        startButton.textContent = 'Restart Timer';
+        pauseButton.textContent = 'Pause Timer';
 
         updateLabel('Work Period');
         startTimer(workTime, recoveryTime);
     });
 
-    function startTimer(workDuration, recoveryDuration) {
-        let remainingTime = workDuration;
-        const interval = setInterval(() => {
-            if (remainingTime <= 0) {
-                clearInterval(interval);
-                playSoundForDuration(5);
-                alert('Work period complete. Start recovery.');
-                updateLabel('Recovery Period');
-                startRecoveryTimer(recoveryDuration);
+    pauseButton.addEventListener('click', () => {
+        isPaused = !isPaused;
+        pauseButton.textContent = isPaused ? 'Resume Timer' : 'Pause Timer';
+        if (isPaused) {
+            clearInterval(timerInterval);
+        } else {
+            // Resume the timer from where it was paused
+            startTimer(remainingTime, isInWorkSession ? remainingTime * 0.3 : remainingTime);
+        }
+    });
+
+    function startTimer(duration, recoveryDuration) {
+        remainingTime = duration;
+        timerInterval = setInterval(() => {
+            if (isPaused) {
+                clearInterval(timerInterval);
                 return;
             }
-            updateDisplay(remainingTime);
-            remainingTime -= 1000;
-        }, 1000);
-    }
-
-    function startRecoveryTimer(duration) {
-        let remainingTime = duration;
-        const interval = setInterval(() => {
             if (remainingTime <= 0) {
-                clearInterval(interval);
                 playSoundForDuration(5);
-                alert('Recovery period complete. Ready for next session.');
-                updateDisplay(0);
-                updateLabel('');
+                clearInterval(timerInterval);
+                if (isInWorkSession) {
+                    alert('Work period complete. Start recovery.');
+                    isInWorkSession = false;
+                    remainingTime = recoveryDuration;
+                    startTimer(recoveryDuration, recoveryDuration);
+                    updateLabel('Recovery Period');
+                } else {
+                    alert('Recovery period complete. Ready for next session.');
+                    isInWorkSession = true; // Reset for next session
+                }
                 return;
             }
             updateDisplay(remainingTime);
@@ -53,6 +74,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const label = document.getElementById('timerLabel');
         if (label) {
             label.textContent = text;
+        }
+        if (text === 'Work Period') {
+            startButton.textContent = 'Restart Timer';
+        } else {
+            startButton.textContent = 'Start Timer';
         }
     }
 
