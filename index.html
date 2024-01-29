@@ -1,57 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVXC65YW6G"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VVXC65YW6G');
+        gtag('config', 'G-VVXC65YW6G');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3.3 Rule Timer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" sizes="16x16 24x24 32x32 64x64" href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="48x48"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-192x192.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-180x180.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="167x167"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-167x167.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="152x152"
+        href="https://cdn.keyqcloud.com/keyq/logo/favicon/favicon-152x152.png">
+    <link rel="manifest" href="https://cdn.keyqcloud.com/keyq/logo/favicon/manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #keyq_logo {
+            width: 60%;
+            margin: 0 auto;
+        }
+        #countdownTimer {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #countdownTimer .timer-container {
+            text-align: center;
+        }
+
+        #countdownTimer select,
+        #countdownTimer button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #timerLabel {
+            font-size: 24px;
+            color: #333;
+        }
+
+        #countdownDisplay {
+            font-size: 48px;
+            color: #333;
+        }
+
+        #countdownWrapper {
+            margin: 20px 0;
+        }
+
+        #explanation-wrapper {
+            width: 70%;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        .footer-container {
+            width: 80%;
+            margin: auto;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="countdownTimer">
-        <div class="timer-container">
-            <h1 style="display:block">3.3 Rule Timer</h1>
-            <select id="timeSelect">
-                <option value="30">30 min</option>
-                <option value="60">1 hr</option>
-                <option value="90">1.5 hrs</option>
-                <option value="120">2 hrs</option>
-                <option value="180">3 hrs</option>
-            </select>
-            <button id="startButton">Start Timer</button>
-            <button id="pauseButton">Pause Timer</button>
-            <div id="countdownWrapper">
-                <span id="timerLabel"></span> <span id="countdownDisplay"></span>
-            </div>
-            <div id="explanation-wrapper">
-                <div class="rule-explanation">
-                    <h2>About the 3.3 Rule</h2>
-                    <p>
-                        The 3.3 Rule, conceptualized by John Briggs, is a method to enhance productivity and prevent burnout. It involves working for up to three hours, followed by a recovery period of about 30% of the work time. 
-                        <a href="https://33rulebook.com/" target="_blank">Learn more about the 3.3 Rule</a>.
-                    </p>
+    <div class="container">
+        <a href="https://www.keyq.cloud" target="_blank"><img id="keyq_logo"
+            src="https://cdn.keyqcloud.com/keyq/logo/keyq_logo_horizontal_light.png" /></a>
+        <div id="countdownTimer">
+            <div class="timer-container">
+                <h1 style="display:block">3.3 Rule Timer</h1>
+                <select id="timeSelect">
+                    <option value="30">30 min</option>
+                    <option value="60">1 hr</option>
+                    <option value="90">1.5 hrs</option>
+                    <option value="120">2 hrs</option>
+                    <option value="180">3 hrs</option>
+                </select>
+                <button id="startButton">Start Timer</button>
+                <button id="pauseButton">Pause Timer</button>
+                <div id="countdownWrapper">
+                    <span id="timerLabel"></span> <span id="countdownDisplay"></span>
                 </div>
-                <div class="keyq-explanation">
-                    <h2>About KeyQ</h2>
-                    <p>
-                        This timer tool was developed and made available by <a href="https://www.keyq.cloud" target="_blank">KeyQ</a> to help entrepreneurs and professionals effectively implement the 3.3 Rule in their daily routines. Empower your productivity journey with KeyQ's innovative solutions.
-                    </p>
-                    <a href="https://www.keyq.cloud" target="_blank"><img src=https://www.keyq.cloud/hs-fs/hubfs/keyq%20logo%20horizontal%20light_70-1.png?width=237&height=70&name=keyq%20logo%20horizontal%20light_70-1.png" /></a>
+                <div id="explanation-wrapper">
+                    <div class="rule-explanation">
+                        <h2>About the 3.3 Rule</h2>
+                        <p>
+                            The 3.3 Rule, conceptualized by John Briggs, is a method to enhance productivity and prevent
+                            burnout. It involves working for up to three hours, followed by a recovery period of about 30%
+                            of the work time.
+                            <a href="https://33rulebook.com/" target="_blank">Learn more about the 3.3 Rule</a>.
+                        </p>
+                    </div>
+                    <div class="keyq-explanation">
+                        <h2>About KeyQ</h2>
+                        <p>
+                            This timer tool was developed and made available by <a href="https://www.keyq.cloud"
+                                target="_blank">KeyQ</a> to help entrepreneurs and professionals effectively implement the
+                            3.3 Rule in their daily routines. Empower your productivity journey with KeyQ's innovative
+                            solutions.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <footer class="footer">
-                <p>&copy; 2024 KeyQ. All Rights Reserved.</p>
-            </footer>
         </div>
     </div>
-    <script src="script.js"></script>
+    <footer>
+        <div class="footer-container">
+            <p>Disclaimer: The tools provided on this site are for informational purposes only. Use them at your own risk. KeyQ, Inc. is not responsible for any consequences arising from their use.</p>
+            <p>&copy; 2020-2024 KeyQ, Inc. All rights reserved.</p>
+        </div>
+    </footer>  
+    <script>
+        let isPaused = false;
+        let timerInterval;
+        let remainingTime;
+        let isInWorkSession = true; // Tracks if the current session is work or recovery
+        var workTime = 0.0; // convert minutes to milliseconds
+        var recoveryTime = 0.0; // 30% of work time
+
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const alarmSound = new Audio('https://33ruletimer.keyq.cloud/alarm.mp3');
+            const startButton = document.getElementById('startButton');
+            const pauseButton = document.getElementById('pauseButton');
+
+            startButton.addEventListener('click', () => {
+                const selectedTime = parseFloat(document.getElementById('timeSelect').value);
+                workTime = selectedTime * 60 * 1000; // convert minutes to milliseconds
+                recoveryTime = workTime * 0.3; // 30% of work time
+
+                isPaused = false;
+                isInWorkSession = true;
+                remainingTime = workTime;
+
+                startButton.textContent = 'Restart Timer';
+                pauseButton.textContent = 'Pause Timer';
+
+                clearInterval(timerInterval);
+
+                updateLabel('Work Period');
+                startTimer(workTime, recoveryTime);
+            });
+
+            pauseButton.addEventListener('click', () => {
+                isPaused = !isPaused;
+                pauseButton.textContent = isPaused ? 'Resume Timer' : 'Pause Timer';
+                if (isPaused) {
+                    clearInterval(timerInterval);
+                } else {
+                    // Resume the timer from where it was paused
+                    startTimer(remainingTime, isInWorkSession ? recoveryTime : remainingTime);
+                }
+            });
+
+            function startTimer(duration, recoveryDuration) {
+                remainingTime = duration;
+                timerInterval = setInterval(() => {
+                    if (isPaused) {
+                        clearInterval(timerInterval);
+                        return;
+                    }
+                    if (remainingTime <= 0) {
+                        playSoundForDuration(3);
+                        clearInterval(timerInterval);
+                        if (isInWorkSession) {
+                            alert('Work period complete. Start recovery.');
+                            isInWorkSession = false;
+                            remainingTime = recoveryDuration;
+                            startTimer(recoveryDuration, recoveryDuration);
+                            updateLabel('Recovery Period');
+                        } else {
+                            alert('Recovery period complete. Ready for next session.');
+                            isInWorkSession = true; // Reset for next session
+                        }
+                        return;
+                    }
+                    updateDisplay(remainingTime);
+                    remainingTime -= 1000;
+                }, 1000);
+            }
+
+            function updateDisplay(time) {
+                const minutes = Math.floor(time / 60000);
+                const seconds = Math.floor((time % 60000) / 1000);
+                document.getElementById('countdownDisplay').textContent =
+                    `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+
+            function updateLabel(text) {
+                const label = document.getElementById('timerLabel');
+                if (label) {
+                    label.textContent = text;
+                }
+                if (text === 'Work Period') {
+                    startButton.textContent = 'Restart Timer';
+                } else {
+                    startButton.textContent = 'Start Timer';
+                }
+            }
+
+            function playSoundForDuration(durationInSeconds) {
+                alarmSound.play();
+                setTimeout(() => {
+                    alarmSound.pause();
+                    alarmSound.currentTime = 0;
+                }, durationInSeconds * 1000);
+            }
+        });
+
+    </script>
 </body>
+
 </html>
